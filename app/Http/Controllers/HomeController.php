@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //User who logged in
+        $user = Auth::user();
+
+        // Get users but who logged in
+        $users = User::where('id' ,'<>' , $user->id)->get();
+        // チャットユーザ選択画面を表示
+        return view('chat_user_select' , compact('users'));
+        // return view('home');
     }
 }
