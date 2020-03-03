@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+//todo: delete later -> チャットルームのview確認用のルーティングのため
 Route::get('chats', 'ChatController@chat' );
 
 Auth::routes();

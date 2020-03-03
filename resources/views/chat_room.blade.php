@@ -6,6 +6,7 @@
         <div class="card">
             <div class="card-header">Comment</div>
             <div class="card-body chat-card">
+                <!-- todo: delete later -> 以下チャットルームview確認用のため -->
                 <!-- @include('components.comment')
                 @include('components.comment')
                 @include('components.comment')
