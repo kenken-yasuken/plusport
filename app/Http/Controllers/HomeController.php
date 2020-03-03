@@ -33,6 +33,5 @@ class HomeController extends Controller
         $users = User::where('id' ,'<>' , $user->id)->get();
         // チャットユーザ選択画面を表示
         return view('chat_user_select' , compact('users'));
-        // return view('home');
     }
 }
