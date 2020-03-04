@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
+
 class HomeController extends Controller
 {
     /**
@@ -31,7 +32,7 @@ class HomeController extends Controller
 
         // Get users but who logged in
         $users = User::where('id' ,'<>' , $user->id)->get();
-        // チャットユーザ選択画面を表示
+        // Display users who's able to send comments
         return view('chat_user_select' , compact('users'));
     }
 }

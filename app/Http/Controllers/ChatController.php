@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Auth;
+use App\Comment;
+use Illuminate\Support\Facades\Auth;
 
 
 class ChatController extends Controller
@@ -14,17 +15,12 @@ class ChatController extends Controller
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function chat()
+    public function showChatRoom()
     {
         // //User who logged in
         // $user = Auth::user();
@@ -33,5 +29,21 @@ class ChatController extends Controller
         // $users = User::where('id' ,'<>' , $user->id)->get();
         // チャットユーザ選択画面を表示
         return view('chat_room');
+    }
+
+    public function commentIndex(){
+        $comments = Comment::get();
+        return view('chat_room', ['comments' => $comments]);
+    }
+
+    public function addComment (Request $request) {
+        $user = Auth::user();
+        $comment = $request->input('comment');
+        Comment::create([
+            'login_id' => $user->id,
+            'name' => $user->name,
+            'comment' => $comment
+        ]);
+        return redirect()->route('chats');
     }
 }
