@@ -14,13 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Auth::routes();
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 //todo: delete later -> チャットルームのview確認用のルーティングのため
-Route::get('chats', 'ChatController@chat' );
+Route::get('chat/{id}', 'ChatController@showChatRoom' );
 
-Auth::routes();
+Route::post('/add', 'HomeController@add')->name('add');
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
