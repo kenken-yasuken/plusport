@@ -8,7 +8,6 @@
         </div>
     </div>
 
-    {{--  チャット可能ユーザ一覧  --}}
     <table class="table">
         <thead>
         <tr>

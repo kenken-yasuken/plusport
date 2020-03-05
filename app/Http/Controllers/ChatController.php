@@ -20,18 +20,13 @@ class ChatController extends Controller
         $this->middleware('auth');
     }
 
-    public function showChatRoom()
+    public function showChatRoom($id)
     {
-        // //User who logged in
-        // $user = Auth::user();
+        //User who logged in
+        $user = Auth::user();
 
         // // Get users but who logged in
         // $users = User::where('id' ,'<>' , $user->id)->get();
-        // チャットユーザ選択画面を表示
-        return view('chat_room');
-    }
-
-    public function commentIndex(){
         $comments = Comment::get();
         return view('chat_room', ['comments' => $comments]);
     }
