@@ -16,6 +16,15 @@
 
 <form method="POST" action="{{route('add')}}">
     @csrf
+    @if ( $errors->any() )
+        <div class= "error-container">
+            <ul>
+                @foreach ( $errors as $error )
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="comment-container row justify-content-center">
         <div class="input-group comment-area">
             <textarea class="form-control" id="comment" name="comment" placeholder="push massage (shift + Enter)"
