@@ -16,12 +16,8 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-
 Route::get('/home', 'HomeController@index')->name('home');
-
-//todo: delete later -> チャットルームのview確認用のルーティングのため
 Route::get('chat/{id}', 'ChatController@showChatRoom' );
-
-Route::post('/add', 'HomeController@add')->name('add');
+Route::post('/add', 'ChatController@addComment')->name('add');
 
 
