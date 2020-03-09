@@ -21,12 +21,10 @@ class ChatController extends Controller
         $this->middleware('auth');
     }
 
-    public function showChatRoom(string $id)
+    public function showChatRoom()
     {
-        //User who logged in
-        $user = Auth::user();
+        // $user = Auth::user();
         $comments = Comment::get();
-        // var_dump('showChatRoom');
         return view('chat_room', ['comments' => $comments]);
     }
 
@@ -36,17 +34,19 @@ class ChatController extends Controller
         $userID= $user->id;
         $comment = $request->input('comment');
 
-        $validator = Validator::make($request->all(), [
-            'comment' => 'required|max:1000'
+        $request->validate([
+            'comment' => 'required|max:10'
         ]);
 
-        if ( $validator->fails() ){
-            print_r('validator start');
-            print_r('validator end');
-            return redirect(action('ChatController@showChatRoom', $userID))
-            ->withErrors($validator)
-            ->withInput();
-        }
+        // $validator = Validator::make($request->all(), [
+        //     'comment' => 'required|max:1000'
+        // ]);
+
+        // if ( $validator->fails() ){
+        //     return redirect(action('ChatController@showChatRoom', $userID))
+        //     ->withErrors($validator)
+        //     ->withInput();
+        // }
         Comment::create([
             'login_id' => $user->id,
             'name' => $user->name,
