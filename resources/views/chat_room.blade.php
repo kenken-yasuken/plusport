@@ -19,8 +19,8 @@
     @if ( $errors->any() )
         <div class= "error-container">
             <ul>
-                @foreach ( $errors as $error )
-                    <li>{{ $error }}</li>
+                @foreach ( $errors->all() as $error )
+                    <p>{{ $error }}</p>
                 @endforeach
             </ul>
         </div>
