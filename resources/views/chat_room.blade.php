@@ -6,9 +6,7 @@
         <div class="card">
             <div class="card-header">Comment</div>
             <div class="card-body chat-card">
-                @foreach ($comments as $item)
-                @include('components.comment', ['item' => $item])
-                @endforeach
+                <div id="comment-data"></div>
             </div>
         </div>
     </div>
@@ -35,4 +33,8 @@
     </div>
 </form>
 
+@endsection
+
+@section('js')
+    <script src="{{ asset('js/comment.js') }}"></script>
 @endsection

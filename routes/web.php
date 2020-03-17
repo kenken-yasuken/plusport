@@ -19,5 +19,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('chat/{id}', 'ChatController@showChatRoom' );
 Route::post('/add', 'ChatController@addComment')->name('add');
+Route::get('chat/result/ajax', 'ChatController@getData');
 
 

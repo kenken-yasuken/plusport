@@ -35,16 +35,4 @@ class HomeController extends Controller
         // Display users who's able to send comments
         return view('chat_user_select' , compact('users'));
     }
-
-    public function add(Request $request)
-    {
-        $user = Auth::user();
-        $comment = $request->input('comment');
-        Comment::create([
-            'login_id' => $user->id,
-            'name' => $user->name,
-            'comment' => $comment
-        ]);
-        return redirect()->route('home');
-    }
 }
