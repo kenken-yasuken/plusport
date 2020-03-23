@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<form method="POST" action="{{route('add')}}">
+<form method="POST" action={{action('ChatController@addComment', $partnerID)}}>
     @csrf
     @if ( $errors->any() )
         <div class= "error-container">

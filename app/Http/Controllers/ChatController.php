@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 // use App\User;
 use Illuminate\Http\Request;
 use App\Comment;
+use Illuminate\Foundation\Console\Presets\React;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -21,37 +22,43 @@ class ChatController extends Controller
         $this->middleware('auth');
     }
 
-    public function showChatRoom()
+    public function showChatRoom(Request $request)
     {
         // $user = Auth::user();
         $comments = Comment::get();
-        return view('chat_room', ['comments' => $comments]);
+        $partnerID = $request->route('id');
+        var_dump('Start partnerID');
+        var_dump($partnerID);
+
+        return view('chat_room', [
+            'comments' => $comments,
+            'partnerID' => $partnerID
+        ]);
     }
 
     //store comment records
-    public function addComment (Request $request) {
+    public function addComment (Request $request)
+    {
+        var_dump('Start addComment');
         $user = Auth::user();
         $userID= $user->id;
         $comment = $request->input('comment');
+        $partnerID = $request->input('parnerID');
+
+        print_r('### Start partnerID');
+        var_dump($partnerID);
 
         $request->validate([
             'comment' => 'required|max:10'
         ]);
-
-        // $validator = Validator::make($request->all(), [
-        //     'comment' => 'required|max:1000'
-        // ]);
-
-        // if ( $validator->fails() ){
-        //     return redirect(action('ChatController@showChatRoom', $userID))
-        //     ->withErrors($validator)
-        //     ->withInput();
-        // }
+        print_r('Before redirect');
         Comment::create([
-            'login_id' => $user->id,
+            'login_id' => $userID,
+            'partner_id' => $partnerID,
             'name' => $user->name,
             'comment' => $comment
         ]);
+        print_r('After create');
         return redirect()-> action('ChatController@showChatRoom', $userID);
     }
 
