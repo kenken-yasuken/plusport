@@ -45,20 +45,22 @@ class ChatController extends Controller
         $comment = $request->input('comment');
         $partnerID = $request->input('parnerID');
 
-        print_r('### Start partnerID');
-        var_dump($partnerID);
 
         $request->validate([
             'comment' => 'required|max:10'
         ]);
-        print_r('Before redirect');
+        print_r('Before create');
         Comment::create([
             'login_id' => $userID,
             'partner_id' => $partnerID,
             'name' => $user->name,
             'comment' => $comment
         ]);
+        print_r('this is alllllllllllll');
+        $all = $request->all();
+        print_r($all);
         print_r('After create');
+        exit();
         return redirect()-> action('ChatController@showChatRoom', $userID);
     }
 
