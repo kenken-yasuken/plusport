@@ -11,7 +11,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th>#</th>
+            <th>User ID</th>
             <th>Name</th>
             <th></th>
         </tr>
@@ -19,7 +19,7 @@
         <tbody>
         @foreach($users as $key => $user)
         <tr>
-            <th>{{$loop->iteration}}</th>
+            <th>{{$user->id}}</th>
             <td>{{$user->name}}</td>
             <td><a href="/chat/{{$user->id}}"><button type="button" class="btn btn-primary">Chat</button></a></td>
         </tr>
