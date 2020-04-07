@@ -12,9 +12,11 @@
     </div>
 </div>
 
-<form method="POST" action={{ action('ChatController@addComment') }}>
+<form method="POST" action='ChatController@addComment'>
     @csrf
-    <input type="hidden" name="partner_id" value={{ $parnerID }}>
+    <input id="partner_id" type="hidden" name="partner_id" value='{{ $partnerID }}'>
+    <input id="login_id" type="hidden" name="login_id" value='{{ $loginID }}'>
+
     @if ( $errors->any() )
         <div class= "error-container">
             <ul>

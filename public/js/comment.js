@@ -4,8 +4,13 @@ $(function() {
 
 function get_data() {
     $.ajax({
-        url: "result/ajax/",
+        url: "result/ajax/",//ここでバックエンドにリクエストしてる=APIを叩いている
         dataType: "json",
+        data: { //バックエンドへのリクエストに含めるパラメータを定義する
+            login_id: $("#login_id").val(),// bladeからhiddenで渡ってきたパラメータを変数につめる
+            partner_id: $("#partner_id").val()
+        },//　あくまでもリクエスト処理はここで終わる
+        //ここからはレスポンスを受けた処理
         success: data => {
             $("#comment-data")
                 .find(".comment-visible")
@@ -32,5 +37,5 @@ function get_data() {
         }
     });
 
-    // setTimeout("get_data()", 5000);
+    setTimeout("get_data()", 5000);
 }

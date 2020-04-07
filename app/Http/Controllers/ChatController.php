@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
-// use App\User;
 use Illuminate\Http\Request;
 use App\Comment;
-use Illuminate\Foundation\Console\Presets\React;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class ChatController extends Controller
@@ -24,48 +23,45 @@ class ChatController extends Controller
 
     public function showChatRoom(Request $request)
     {
-        // $user = Auth::user();
-        $comments = Comment::get();
-        $partnerID = $request->route('id');
-        var_dump('Start partnerID');
-        var_dump($partnerID);
+        $user = Auth::user();
+        $loginID = $user->id;
+
+        $partnerID = intval($request->route('id'));
+        $comments = DB::table('comments')->where('login_id', '=' , $loginID)->where('partner_id', '=', $partnerID)->get();
 
         return view('chat_room', [
             'comments' => $comments,
-            'partnerID' => $partnerID
+            'partnerID' => $partnerID,
+            'loginID' => $loginID
         ]);
     }
 
     //store comment records
     public function addComment (Request $request)
     {
-        var_dump('Start addComment');
         $user = Auth::user();
-        $userID= $user->id;
+        $loginID= $user->id;
         $comment = $request->input('comment');
-        $partnerID = $request->input('parnerID');
-
+        $partnerID = $request->input('partner_id');
 
         $request->validate([
-            'comment' => 'required|max:10'
+            'comment' => 'required|max:256'
         ]);
-        print_r('Before create');
+
         Comment::create([
-            'login_id' => $userID,
+            'login_id' => $loginID,
             'partner_id' => $partnerID,
             'name' => $user->name,
             'comment' => $comment
         ]);
-        print_r('this is alllllllllllll');
-        $all = $request->all();
-        print_r($all);
-        print_r('After create');
-        exit();
-        return redirect()-> action('ChatController@showChatRoom', $userID);
+
+        return redirect()-> action('ChatController@showChatRoom', $partnerID);
     }
 
-    public function getData(){
-        $comments = Comment::orderBy('created_at', 'desc')->get();
+    public function getData(Request $request){
+        $loginID = $request->input('login_id');
+        $partnerID = $request->input('partner_id');
+        $comments = Comment::orderBy('created_at', 'desc')->where('login_id', '=' , $loginID)->where('partner_id', '=', $partnerID)->get();
         $json = ["comments" => $comments];
         return response()->json($json);
     }
