@@ -17,9 +17,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-// Comments
+
+// MATCHINGS //
+Route::get('target/list', 'Partner\SearchController@showPartnerList' );
+
+// SEND COMMENTS //
 Route::get('chat/{id}', 'ChatController@showChatRoom' );
 Route::post('chat/{id}', 'ChatController@addComment')->name('add');
 Route::get('chat/result/ajax', 'ChatController@getData');
+
+
 
 
