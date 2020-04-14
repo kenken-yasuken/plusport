@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use App\Repository\Partner;
-use App\Http\Requests\PartnerListRequest;
+use App\Http\Requests\Partner\PartnerListRequest;
 
 
-class MatchingController extends Controller
+class SearchController extends Controller
 {
     /**
      * Create a new controller instance.

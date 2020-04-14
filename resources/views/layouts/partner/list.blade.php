@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
-@section('contents')
+@section('content')
+    
     <p>{{ $partners }}</p>
 @endsection
