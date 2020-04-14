@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Pay\Man\Web\Root\MeetingRoom;
+namespace App\Http\Requests\Partner;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class RoomSettingRequest extends FormRequest
+class PartnerListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
