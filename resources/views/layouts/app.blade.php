@@ -20,6 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/chat_room.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/partner_list.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
