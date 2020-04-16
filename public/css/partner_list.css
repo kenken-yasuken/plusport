@@ -1,4 +1,9 @@
-.index .item {
+.index {
+    display:inline-block;
     flex-wrap: wrap;
-    width: 1px;
+    flex-direction: row;
+    width: 200px;
+    padding: 2.5% 2.5%;
+    margin: 2.5% 2.5%;
+    text-align: center;
 }
