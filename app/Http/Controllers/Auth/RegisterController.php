@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'family_name' => ['required', 'string', 'max:50'],
             'first_name_kana' => ['required', 'string', 'max:50'],
             'family_name_kana' => ['required', 'string', 'max:50'],
+            'nickname' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'age' => ['required', 'string', 'max:10'],
             'gender' => ['required', 'string', 'max:10'],
@@ -70,11 +71,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
         return User::create([
             'first_name' => $data['first_name'],
             'family_name' => $data['family_name'],
-            'first_name_kana' => $data['first_name'],
-            'family_name_kana' => $data['family_name'],
+            'first_name_kana' => $data['first_name_kana'],
+            'family_name_kana' => $data['family_name_kana'],
+            'nickname' => $data['nickname'],
             'email' => $data['email'],
             'age' => $data['age'],
             'gender' => $data['gender'],
