@@ -6,12 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use App\Repository\Partner;
-use App\Http\Requests\Partner\ShowDetailRequest;
+use App\Http\Requests\Partner\PartnerListRequest;
 
 
-
-
-class ShowDetailController extends Controller
+class SearchController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,8 +21,12 @@ class ShowDetailController extends Controller
         $this->middleware('auth');
     }
 
-    public function showPartnerDetail(ShowDetailRequest $request)
+    public function showPartnerList(PartnerListRequest $request)
     {
+        $loginUser = Auth::user();
+        $partner = new Partner;
+        $partners = $partner->getTargets($loginUser->id);
+
         return View::make('layouts.partner.list', [
             'partners' => $partners,
         ]);
