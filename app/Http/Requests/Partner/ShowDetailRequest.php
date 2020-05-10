@@ -28,19 +28,9 @@ class ShowDetailRequest extends FormRequest
         ];
     }
 
-    // public function getStoreNameID(): string
-    // {
-    //     return $this->input(self::STORE_NAME_ID);
-    // }
+    public function getPartnerID(){
+        return $this->input(self::USER_ID);
+    }
 
-    /**
-     * Endpoint key can be null when user don't input characters.
-     * Auto creation works in that case.
-     */
-    // public function getEndPointKey()
-    // {
-    // return $this->input(self::ENDPOINT_KEY);
-    // }
-
-    // const TABLE_NAME = 'scim_settings_tbl';
+    const USER_ID = 'user_id';
 }
