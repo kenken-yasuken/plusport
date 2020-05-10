@@ -29,7 +29,7 @@ class ChatController extends Controller
         $partnerID = intval($request->route('id'));
         $comments = DB::table('comments')->where('login_id', '=' , $loginID)->where('partner_id', '=', $partnerID)->get();
 
-        return view('chat_room', [
+        return view('chat.chat_room', [
             'comments' => $comments,
             'partnerID' => $partnerID,
             'loginID' => $loginID
@@ -51,7 +51,7 @@ class ChatController extends Controller
         Comment::create([
             'login_id' => $loginID,
             'partner_id' => $partnerID,
-            'name' => $user->name,
+            'name' => $user->nickname,
             'comment' => $comment
         ]);
 

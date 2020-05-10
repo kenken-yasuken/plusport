@@ -33,6 +33,6 @@ class HomeController extends Controller
         // Get users but who logged in
         $users = User::where('id' ,'<>' , $user->id)->get();
         // Display users who's able to send comments
-        return view('chat_user_select' , compact('users'));
+        return view('chat.chat_user_select' , compact('users'));
     }
 }
