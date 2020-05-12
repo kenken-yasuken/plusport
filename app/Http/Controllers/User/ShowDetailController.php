@@ -25,10 +25,10 @@ class ShowDetailController extends Controller
     public function showDetail(ShowDetailRequest $request)
     {
         $partnerID = $request->getPartnerID();
-        $partner = DB::table(self::TABLE_NAME)->where('id', $partnerID);
-
+        $partner = Partner::getByID($partnerID);
+        $userName = $partner->nickName;
         return View::make('partner.detail', [
-            'partner' => $partner
+            'userName' => $userName
         ]);
     }
 

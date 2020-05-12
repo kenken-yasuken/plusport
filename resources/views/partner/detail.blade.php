@@ -1,60 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Twitter Card</title>
-    <link rel="stylesheet" href="css/estilos.css">
-    <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
-    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <link rel="stylesheet" href="/css/user_detail.css">
 </head>
 <body>
-
-    <div class="container">
+    <div class="card card-one">
         <header>
-            <div class="bio">
-        <img src="http://www.croop.cl/UI/twitter/images/up.jpg" alt="background" class="bg">
-                <div class="desc">
-                    <h3>@carlf</h3>
-                    <p>Carl Fredricksen is the protagonist in Up. He also appeared in Dug's Special Mission as a minor character.</p>
-                </div>
-            </div>
-
-            <div class="avatarcontainer">
-                <img src="http://www.croop.cl/UI/twitter/images/carl.jpg" alt="avatar" class="avatar">
-                <div class="hover">
-                        <div class="icon-twitter"></div>
-                </div>
-            </div>
-
-
+        <div class="avatar">
+            <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="ヤスケン" />
+        </div>
         </header>
 
-        <div class="content">
-            <div class="data">
-                <ul>
-                    <li>
-                        2,934
-                        <span>Tweets</span>
-                    </li>
-                    <li>
-                        1,119
-                        <span>Followers</span>
-                    </li>
-                    <li>
-                        530
-                        <span>Following</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="follow"> <div class="icon-twitter"></div> Follow</div>
+        <h3>{{ $partner-> }}</h3>
+        <div class="desc">
+            <p>{{"※feelingカラム追加後、値をここへ表示する"}}</p>
+        </div>
+        <div class="fa-like">
+            <form action="">
+                <button type="submit"><img class="fa fa-like" src="/images/like.png">
+            </form>
+            <div class="clear"></div>
         </div>
 
+        <footer>
+            <a href=""><i class="fa fa-facebook"></i></a>
+            <a href=""><i class="fa fa-linkedin"></i></a>
+            <a href=""><i class="fa fa-twitter"></i></a>
+            <a href=""><i class="fa fa-instagram"></i></a>
+        </footer>
     </div>
-
 </body>
 </html>
-
-
-Resources1×0.5×0.25×Rerun
