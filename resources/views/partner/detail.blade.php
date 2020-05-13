@@ -17,7 +17,7 @@
 
         <h3>{{ $nickName }}</h3>
         <div class="desc">
-            <p>{{"やっぴーす！"}}</p>
+            <p>{{"※feelingカラム追加後、値をここへ表示する"}}</p>
         </div>
         <div class="fa-like">
             <form action="">
