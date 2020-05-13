@@ -13,10 +13,10 @@ class Partner{
         return $entries;
     }
 
-    public static function getByID($loginUserID): ?PartnerInfo
+    public static function getByID($partnerID): ?PartnerInfo
     {
-        $entry = DB::table(self::getTableName())->where('id' , $loginUserID)->get();
-        return self::fillInfo($entry);
+        $entry = DB::table(self::getTableName())->where('id' , $partnerID)->get();
+        return self::fillInfo($entry[0]);
     }
 
     public static function fillInfo($dbData): PartnerInfo
@@ -27,7 +27,7 @@ class Partner{
         // $info->familyName = strval($dbData->familyName);
         // $info->firstNameKana = strval($dbData->firstNameKana);
         // $info->familyNameKana = strval($dbData->familyNameKana);
-        $info->nickName = strval($dbData->nickName);
+        $info->nickName = strval($dbData->nickname);
         // $info->gender = strval($dbData->gender);
         // $info->age = strval($dbData->age);
         // $info->birthday = strval($dbData->birthday);

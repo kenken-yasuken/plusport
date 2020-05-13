@@ -15,9 +15,9 @@
         </div>
         </header>
 
-        <h3>{{ $partner-> }}</h3>
+        <h3>{{ $nickName }}</h3>
         <div class="desc">
-            <p>{{"※feelingカラム追加後、値をここへ表示する"}}</p>
+            <p>{{"やっぴーす！"}}</p>
         </div>
         <div class="fa-like">
             <form action="">
