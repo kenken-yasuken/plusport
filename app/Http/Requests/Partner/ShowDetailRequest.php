@@ -29,8 +29,8 @@ class ShowDetailRequest extends FormRequest
     }
 
     public function getPartnerID(){
-        return $this->input(self::USER_ID);
+        return $this->input(self::PARTNER_ID);
     }
 
-    const USER_ID = 'user_id';
+    const PARTNER_ID = 'partner_id';
 }

@@ -27,7 +27,7 @@ class SearchController extends Controller
         $partner = new Partner;
         $partners = $partner->getTargets($loginUser->id);
 
-        return View::make('layouts.partner.list', [
+        return View::make('partner.list', [
             'partners' => $partners,
         ]);
     }

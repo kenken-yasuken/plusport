@@ -19,7 +19,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // MATCHINGS //
-Route::get('target/list', 'Partner\SearchController@showPartnerList');
+Route::get('partner/list', 'User\SearchController@showPartnerList');
 Route::get('partner/detail', 'User\ShowDetailController@showDetail');
 
 // SEND COMMENTS //
