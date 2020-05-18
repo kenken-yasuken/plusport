@@ -16,4 +16,26 @@ class DbDateUtil {
     {
         return new DateTime( $dbDateString, new DateTimeZone('Asia/Tokyo') );
     }
+
+    public static function toDB( DateTime $dateTime ) : string {
+        return $dateTime->setTimezone( new DateTimeZone('UTC') )->format('Y-m-d H:i:s');
+    }
+
+    public static function getNow() : DateTime
+    {
+        return new DateTime( 'now', new DateTimeZone('Asia/Tokyo') );
+    }
+
+    /**
+     * This function returns datetime
+     * with the storable form into DB
+     *
+     * @return string
+     */
+    public static function getNowDB() : string
+    {
+        return self::toDB( self::getNow() );
+    }
+
+
 }
