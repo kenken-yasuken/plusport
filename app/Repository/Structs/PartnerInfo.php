@@ -44,7 +44,7 @@ class PartnerInfo {
     /** @var string $ememberToken */
     public $rememberToken = '';
 
-    /** @var DateTime $updatedAt */
+    /** @var DateTime $createdAt */
     public $createdAt;
 
     /** @var DateTime $updatedAt */
