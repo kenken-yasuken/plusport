@@ -28,7 +28,8 @@ class ShowDetailController extends Controller
         $partner = Partner::getByID($partnerID);
         $nickName = $partner->nickName;
         return View::make('partner.detail', [
-            'nickName' => $nickName
+            'nickName' => $nickName,
+            'toUserID' => $partnerID
         ]);
     }
 

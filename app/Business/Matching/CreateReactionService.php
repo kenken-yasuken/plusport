@@ -19,11 +19,13 @@ class CreateReactionService
     //     $this->middleware('auth');
     // }
 
-    public function doCreate(string $fromUserID, string $toUserID)
+    public function doCreate(string $fromUserID, string $toUserID, int $reactionStatus): bool
     {
-        $reactionStatus = '';
         $reaction = new Reaction;
-        $newReaction = $reaction.create($fromUserID, $toUserID);
+        if(!$reaction->create($fromUserID, $toUserID, $reactionStatus)){
+            throw new \InvalidArgumentException('[#fkswe1223]: Something went wrong in create transaction');
+        }
+        return true;
     }
 }
 

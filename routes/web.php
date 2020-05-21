@@ -18,9 +18,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// MATCHINGS //
+// PartnerDetal //
 Route::get('partner/list', 'User\SearchController@showPartnerList');
 Route::get('partner/detail', 'User\ShowDetailController@showDetail');
+
+// REACTION FOR PARTNER //
+Route::post('reaction/like', 'Matching\DoLikeController@doLike');
 
 // SEND COMMENTS //
 Route::get('chat/{id}', 'ChatController@showChatRoom' );
