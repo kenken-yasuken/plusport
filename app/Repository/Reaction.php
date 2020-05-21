@@ -8,14 +8,12 @@ use App\Util\DbDateUtil;
 
 class Reaction{
     public static function create(
-        string $id,
         string $fromUserID,
         string $toUserID,
         string $status
         ): bool {
             $now = DbDateUtil::getNowDB();
             DB::table(self::getTableName())->insert([
-                'id' => $id,
                 'from_user_id' => $fromUserID,
                 'to_user_id' => $toUserID,
                 'status' => $status,

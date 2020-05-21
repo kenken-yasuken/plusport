@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Matching;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
-use App\Http\Requests\Partner\DoLikeRequest;
+use App\Http\Requests\Matching\DoLikeRequest;
 use App\Business\Matching\CreateReactionService;
+use App\Repository\Enum\ReactionEnum;
 
 
 class DoLikeController extends Controller
@@ -23,10 +24,12 @@ class DoLikeController extends Controller
 
     public function doLike(DoLikeRequest $request)
     {
-        $fromUserID = $request->getLoginUserID();
+        $loginUserID = Auth::user()->id;
         $toUserID = $request->getToUserID();
+        $reactionStatus = ReactionEnum::LIKE;
         $createReaction = new CreateReactionService;
-        $createReaction->doCreate($fromUserID, $toUserID);    }
+        $createReaction->doCreate($loginUserID, $toUserID, $reactionStatus);
+    }
 
     const TABLE_NAME = 'users';
 }

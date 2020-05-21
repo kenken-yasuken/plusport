@@ -20,8 +20,10 @@
             <p>{{"※feelingカラム追加後、値をここへ表示する"}}</p>
         </div>
         <div class="fa-like">
-            <form action="">
-                <button type="submit"><img class="fa fa-like" src="/images/like.png">
+            <form method="post" action="/reaction/like">
+            @csrf
+                <input type="hidden" name="to_user_id" value="{{ $toUserID }}">
+                <button type="submit"><img class="fa fa-like" src="/images/like.png"></button>
             </form>
             <div class="clear"></div>
         </div>

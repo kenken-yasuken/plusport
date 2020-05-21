@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Partner;
+namespace App\Http\Requests\Matching;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +19,6 @@ class DoLikeRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
      * @return array
      */
     public function rules()
@@ -27,19 +26,12 @@ class DoLikeRequest extends FormRequest
         return [
         ];
     }
-
-    public function getPartnerID(){
-        return $this->input(self::PARTNER_ID);
-    }
-
-    public function getLoginUserID(){
-        return $this->input(self::PARTNER_ID);
-    }
-
+    /**
+     * same as getPartnerID function
+     * @return string
+     */
     public function getToUserID(){
-        return $this->input(self::PARTNER_ID);
+        return $this->input(self::TO_USER_ID);
     }
-
-
-    const PARTNER_ID = 'partner_id';
+    const TO_USER_ID = 'to_user_id';
 }
