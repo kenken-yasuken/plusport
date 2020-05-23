@@ -29,6 +29,7 @@ class DoLikeController extends Controller
         $reactionStatus = ReactionEnum::LIKE;
         $createReaction = new CreateReactionService;
         $createReaction->doCreate($loginUserID, $toUserID, $reactionStatus);
+        return View::make('matching.result');
     }
 
     const TABLE_NAME = 'users';
