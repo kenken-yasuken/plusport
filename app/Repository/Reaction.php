@@ -29,6 +29,20 @@ class Reaction{
         return self::fillInfo($entry[0]);
     }
 
+    /**
+     * Check if other patner already liked yourself
+     * @return bool
+    */
+    public static function getByFromAndToID($loginUserID, $partnerID): bool
+    {
+        $entry = DB::table(self::getTableName())->where('from_user_id' , $partnerID)->where('to_user_id' , $loginUserID)->get();
+        if($entry != null){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static function fillInfo($dbData): ReactionInfo
     {
         $info = new ReactionInfo;
