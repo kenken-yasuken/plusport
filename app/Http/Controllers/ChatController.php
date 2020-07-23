@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Validator;
+// use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,32 @@ class ChatController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function showChatList(Request $request)
+    {
+        $user = Auth::user();
+
+        /**
+         * ログインユーザーとマッチしたユーザーのみ取得
+         * trainerとtraineeそれぞれの場合で分ける
+         */
+        $trainerData = DB::table(self::getTableName())->join('matchings as m1', 'm1.trainer_id', '=', 'users.id')
+                             ->where('m1.trainer_id', $user->id)
+                             ->orderBy('m1.created_at', 'asc')
+                             ->get();
+
+        // dd($trainerData);
+        $traineeData = DB::table(self::getTableName())->join('matchings as m2', 'm2.trainee_id', '=', 'users.id')
+                             ->where('m2.trainee_id', $user->id)
+                             ->orderBy('m2.created_at', 'asc')
+                             ->get();
+
+        // 両方の場合のチャットを合わせてorder byして表示する
+        $users = $trainerData->merge($traineeData);
+        return View::make('chat.chat_user_select' , [
+            'users' => $users
+        ]);
     }
 
     public function showChatRoom(Request $request)
@@ -65,6 +92,13 @@ class ChatController extends Controller
         $json = ["comments" => $comments];
         return response()->json($json);
     }
+
+    public static function getTableName(): string
+    {
+        return self::TABLE_NAME;
+    }
+
+    const TABLE_NAME = 'users';
 }
 
 

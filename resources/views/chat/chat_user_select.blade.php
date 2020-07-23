@@ -11,16 +11,16 @@
     <table class="table">
         <thead>
         <tr>
-            <th>User ID</th>
-            <th>Name</th>
+            <th>名前</th>
+            <th>年齢</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        @foreach($users as $key => $user)
+        @foreach($users as $user)
         <tr>
-            <th>{{$user->id}}</th>
-            <td>{{$user->name}}</td>
+            <th>{{$user->nickname}}</th>
+            <td>{{$user->age}}</td>
             <td><a href="/chat/{{$user->id}}"><button type="button" class="btn btn-primary">Chat</button></a></td>
         </tr>
         @endforeach

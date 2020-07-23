@@ -32,10 +32,10 @@ class Matching{
         return true;
     }
 
-    public static function getTargets($loginUserID)
+    public static function getByLoginUser($loginUserID)
     {
         $entries = DB::table(self::getTableName())->where('id' ,'<>' , $loginUserID)->get();
-        return $entries;
+        return self::fillInfo($entries[0]);
     }
 
     // public static function getByID($partnerID): ?PartnerInfo
